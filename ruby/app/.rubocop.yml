@@ -7,5 +7,10 @@ AllCops:
     - 'config/**/*'
     - 'db/**/*'
     - 'node_modules/**/*'
+
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

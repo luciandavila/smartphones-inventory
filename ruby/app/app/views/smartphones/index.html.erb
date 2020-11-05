@@ -1,0 +1,63 @@
+<h1>Inventário</h1>
+
+<%= form_tag(smartphones_index_path, method: :get) do %>
+  <label for="manufacturer">Selecione um fabricante:</label>
+  <%= select_tag 'Fabricante',
+                  options_for_select(@manufacturers, selected: @selected_manufacturer),
+                  label: 'Fabricante',
+                  include_blank: 'Todos',
+                  name: 'manufacturer',
+                  id:'manufacturer'
+  %>
+  <br>
+  <br>
+
+  <label for="model">Selecione um modelo:</label>
+  <%= select_tag 'Modelo',
+                  options_for_select(@models, selected: @selected_model),
+                  include_blank: 'Todos',
+                  name: 'model',
+                  id: 'model'
+  %>
+  <br>
+  <br>
+
+  <label for="carrier_plan_type">Selecione um tipo de plano:</label>
+  <%= select_tag 'Tipo de plano',
+                  options_for_select(@carrier_plan_types, selected: @selected_carrier_plan_type),
+                  include_blank: 'Todos',
+                  name: 'carrier_plan_type',
+                  id: 'carrier_plan_type'
+  %>
+  <br>
+  <br>
+  
+  <%= submit_tag 'Filtrar' %>
+<% end %>
+
+<p>Esses são os smartphones disponíveis no momento:</p>
+
+<% if @smartphones.empty? %>
+  <p> Não foram encontrados smartphones em inventário com as caracteristicas filtradas. <p>
+<% else %>
+  <table>
+    <tr>
+      <th>Fabricante</th>
+      <th>Modelo</th>
+      <th>Cor</th>
+      <th>Tipo de Plano</th>
+      <th>Quantidade</th>
+      <th>Preço</th>
+    </tr>
+    <% @smartphones.each do |smartphone| %>
+      <tr>
+        <td><%= smartphone.manufacturer %></td>
+        <td><%= smartphone.model %></td>
+        <td><%= smartphone.color %></td>
+        <td><%= smartphone.carrier_plan_type == 'pre' ? 'Pré pago' : 'Pós pago' %></td>
+        <td><%= smartphone.quantity %></td>
+        <td><%= number_to_currency(smartphone.price, unit: 'R$') %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <%= link_to smartphones_index_path do %>
+      <span>Inventário</span>
+    <% end %>
+
+    <% 
+=begin %>
+    <%= link_to uploads_index_path do %>
+      <span>Atualizar Inventário</span>
+    <% end %>
+<% 
+=end %>
+
     <%= yield %>
   </body>
 </html>
