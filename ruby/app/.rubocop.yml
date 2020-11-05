@@ -1,0 +1,11 @@
+AllCops:
+  NewCops: enable
+  Include:
+    - '**/*.rb'
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+Style/Documentation:
+  Enabled: false

@@ -1,3 +1,5 @@
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop-hq/rubocop)
+
 # Teste Técnico para Alive App
 
 Este projeto foi desenvolvido para atender os requisitos do teste técnico de ruby do Alive App.
@@ -14,7 +16,9 @@ $ rmv use
 $ bundle install
 
 # subir os bancos de dados
-$ <comandos para subir o banco aqui>
+$ rake db:create
+$ rake db:schema:load
+$ rake db:seed
 ```
 
 ## Como rodar?
