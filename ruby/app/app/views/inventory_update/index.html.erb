@@ -1,0 +1,43 @@
+
+<p>Para atualizar o inventário, por favor, faça o upload de um arquivo csv: </p>
+
+<%= form_with(url: inventory_update_create_path) do |form| %>
+  <%= form.file_field :csv_file, required: true, accept: 'text/csv', name: 'csv_file' %>
+  <br>
+  <br>
+
+  <%= form.submit 'Atualizar' %>
+<% end %>
+
+
+<% if !@inventory_updates.empty? %>
+  <p>Aqui está uma lista das últimas atualizações:</p>
+
+  <table>
+    <tr>
+      <th>Data</th>
+      <th>Arquivo</th>
+      <th>Status</th>
+      <th>Menssagem de erro</th>
+    </tr>
+    <% @inventory_updates.each do |inventory_update| %>
+      <tr>
+        <td><%= inventory_update.created_at %></td>
+        <td><%= link_to 'Download', url_for(inventory_update.csv_file) %></td>
+        <td>
+          <% if inventory_update.status == 'processing' %>
+            Em processamento
+          <% elsif inventory_update.status == 'completed' && inventory_update.precessing_error.blank? %>
+            Processamento concluido: <%= link_to 'Ver inventário', smartphones_index_path %>.</td>
+          <% else %>
+            Erro.
+          <% end %>
+        <td><%= inventory_update.precessing_error || '-' %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <p><b>Atenção: </b>O processamento de uma atualização pode levar alguns minutos, você pode voltar mais tarde ou atualizar a página para conferir o resultado.</p>
+
+<% end %>
+

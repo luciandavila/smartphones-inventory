@@ -14,7 +14,7 @@ class SmartphonesController < ApplicationController
   end
 
   def filters
-    @filters ||= params.permit(permitted_params).reject { |_, value| value.blank? }
+    @filters ||= params.permit(permitted_params).reject { |_key, value| value.blank? }
   end
 
   def permitted_params
