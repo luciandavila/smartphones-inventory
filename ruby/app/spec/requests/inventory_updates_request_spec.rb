@@ -3,27 +3,28 @@
 require 'rails_helper'
 
 RSpec.describe 'InventoryUpdates', type: :request do
-  describe 'GET /index' do
+  describe 'GET /inventory_updates' do
+    subject { get '/inventory_updates' }
     it 'returns http success' do
-      get '/inventory_update/index'
+      subject
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe 'POST /create' do
+  describe 'POST /inventory_updates' do
     include Rack::Test::Methods
     include ActionDispatch::TestProcess
 
     let!(:another_inventory_update) { create :inventory_update }
     let(:params) { { csv_file: Rack::Test::UploadedFile.new('spec/files/input_valid.csv', 'text/csv') } }
 
-    subject { post '/inventory_update/create', params }
+    subject { post '/inventory_updates', params }
 
     it 'redirects to index action' do
       subject
 
       expect(last_response.status).to eq(302)
-      expect(last_response.location).to match 'inventory_update/index'
+      expect(last_response.location).to match '/inventory_updates'
     end
 
     it 'creates an inventory update' do

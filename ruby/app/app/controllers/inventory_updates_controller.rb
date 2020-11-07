@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class InventoryUpdateController < ApplicationController
+class InventoryUpdatesController < ApplicationController
   def index
     @inventory_updates = InventoryUpdate.all.order created_at: :desc
   end
@@ -11,6 +11,6 @@ class InventoryUpdateController < ApplicationController
     resource.save!
 
     InventoryUpdatesProcessorJob.perform_later resource
-    redirect_to inventory_update_index_path
+    redirect_to inventory_updates_path
   end
 end
