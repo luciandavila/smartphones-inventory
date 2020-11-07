@@ -1,0 +1,58 @@
+name: ci
+
+on: [push]
+
+jobs:
+  vm-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Setup Node 10.20.1
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.20.1
+
+    - name: Find yarn cache location
+      id: yarn-cache
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - name: JS package cache
+      uses: actions/cache@v1
+      with:
+        path: ${{ steps.yarn-cache.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Set up Ruby 2.6.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.6
+  
+    - name: Ruby package cache
+      uses: actions/cache@v2
+      with:
+        path: ruby/app/vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
+    - name: Install dependencies
+      run: |
+        cd ruby/app
+        bundle install
+        yarn install
+    - name: Setup db
+      run: |
+        cd ruby/app
+        rake db:setup
+    - name: Run tests
+      run: |
+        cd ruby/app
+        bundle exec rspec
+    - name: Run rubocop
+      run: |
+        cd ruby/app
+        bundle exec rubocop

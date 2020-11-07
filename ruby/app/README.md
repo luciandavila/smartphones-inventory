@@ -1,4 +1,4 @@
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop-hq/rubocop)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop-hq/rubocop) <a href="https://github.com/luciandavila/hiring/actions?query=workflow%3Aci"><img alt="ci status" src="https://github.com/luciandavila/hiring/workflows/ci/badge.svg"></a>
 
 # Teste Técnico para Alive App
 
@@ -6,19 +6,21 @@ Este projeto foi desenvolvido para atender os requisitos do teste técnico de ru
 
 ## Setup
 
-Antes de rodar o app, você precisará: 
+Após clonar este repo, antes de rodar o app, você precisará:
 ```bash
 
-# usar a versão ruby esperada (2.6.6)
+# navegar até a pasta correta
+$ cd ruby/app
+
+# usar a versão ruby esperada (2.6.6) (você pode instalar a versão manualmente caso deseje)
 $ rmv use
 
-# instalar dependencias
+# instalar as dependencias
 $ bundle install
 
-# subir os bancos de dados
-$ rake db:create
-$ rake db:schema:load
-$ rake db:seed
+# inciar o banco
+$ rake db:setup
+
 ```
 
 ## Como rodar?
