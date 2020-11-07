@@ -30,7 +30,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.6
-  
+
     - name: Ruby package cache
       uses: actions/cache@v2
       with:

@@ -16,6 +16,7 @@ $ cd ruby/app
 $ rmv use
 
 # instalar as dependencias
+$ yarn install
 $ bundle install
 
 # inciar o banco

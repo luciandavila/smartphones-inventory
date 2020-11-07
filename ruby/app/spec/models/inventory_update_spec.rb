@@ -9,8 +9,6 @@ RSpec.describe InventoryUpdate, type: :model do
 
   it { is_expected.to have_one_attached(:csv_file) }
 
-  it { expect(false).to be truthy }
-
   describe 'csv_file_validation' do
     subject { create :inventory_update }
 
