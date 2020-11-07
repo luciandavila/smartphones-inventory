@@ -27,12 +27,20 @@
         <td>
           <% if inventory_update.status == 'processing' %>
             Em processamento
-          <% elsif inventory_update.status == 'completed' && inventory_update.precessing_error.blank? %>
+          <% elsif inventory_update.status == 'completed' && inventory_update.processing_error.blank? %>
             Processamento concluido: <%= link_to 'Ver inventário', smartphones_index_path %>.</td>
           <% else %>
             Erro.
           <% end %>
-        <td><%= inventory_update.precessing_error || '-' %></td>
+        <td>
+          <% if inventory_update.processing_error == 'unexpected_error' %>
+            Um erro inesperado aconteceu, por favor tente mais tarde.
+          <% elsif inventory_update.processing_error == 'invalid_csv' %>
+            O arquivo CSV enviado não possui um formato válido.
+          <% else %>
+            -
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>

@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_11_06_002345) do
 
   create_table "inventory_updates", force: :cascade do |t|
     t.string "status"
-    t.string "precessing_error"
+    t.string "processing_error"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

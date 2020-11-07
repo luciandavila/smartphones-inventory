@@ -10,7 +10,7 @@ class SmartphonesController < ApplicationController
     @selected_model = filters[:model]
     @selected_carrier_plan_type = filters[:carrier_plan_type]
 
-    @smartphones = Smartphone.where(filters).order(created_at: :desc)
+    @smartphones = Smartphone.where(filters).order(price: :asc)
   end
 
   def filters

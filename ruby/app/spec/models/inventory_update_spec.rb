@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe InventoryUpdate, type: :model do
   it { is_expected.to validate_presence_of(:status) }
   it { is_expected.to validate_inclusion_of(:status).in_array(%w[processing completed]) }
+  it { is_expected.to validate_inclusion_of(:processing_error).in_array(%w[invalid_csv unexpected_error]).allow_blank }
 
   it { is_expected.to have_one_attached(:csv_file) }
 
