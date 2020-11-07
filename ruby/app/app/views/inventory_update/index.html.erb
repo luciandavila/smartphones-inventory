@@ -1,17 +1,18 @@
+<h1 class="centered">Atualizações de Inventário</h1>
 
-<p>Para atualizar o inventário, por favor, faça o upload de um arquivo csv: </p>
+<p class="centered">Para atualizar o inventário, por favor, faça o upload de um arquivo csv: </p>
 
-<%= form_with(url: inventory_update_create_path) do |form| %>
+<%= form_with(url: inventory_update_create_path, class: 'centered') do |form| %>
   <%= form.file_field :csv_file, required: true, accept: 'text/csv', name: 'csv_file' %>
   <br>
   <br>
 
-  <%= form.submit 'Atualizar' %>
+  <%= form.submit 'Processar atualização' %>
 <% end %>
 
 
 <% if !@inventory_updates.empty? %>
-  <p>Aqui está uma lista das últimas atualizações:</p>
+  <p class="centered">Aqui está uma lista das últimas atualizações:</p>
 
   <table>
     <tr>
@@ -28,7 +29,7 @@
           <% if inventory_update.status == 'processing' %>
             Em processamento
           <% elsif inventory_update.status == 'completed' && inventory_update.processing_error.blank? %>
-            Processamento concluido: <%= link_to 'Ver inventário', smartphones_index_path %>.</td>
+            Processamento concluido: <br> <%= link_to 'Ver inventário', smartphones_index_path %>.</td>
           <% else %>
             Erro.
           <% end %>
@@ -45,7 +46,7 @@
     <% end %>
   </table>
 
-  <p><b>Atenção: </b>O processamento de uma atualização pode levar alguns minutos, você pode voltar mais tarde ou atualizar a página para conferir o resultado.</p>
+  <p class="centered"><b>Atenção: </b>O processamento de uma atualização pode levar alguns minutos, você pode voltar mais tarde ou atualizar a página para conferir o resultado.</p>
 
 <% end %>
 

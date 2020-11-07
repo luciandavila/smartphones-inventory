@@ -10,14 +10,18 @@
   </head>
 
   <body>
-    <%= link_to inventory_update_index_path do %>
-      <span>Atualizar Inventário</span>
-    <% end %>
+    <div id="app-container">
+      <nav>
+        <%= link_to inventory_update_index_path do %>
+          <span>Atualizações de Inventário</span>
+        <% end %>
 
-    <%= link_to smartphones_index_path do %>
-      <span>Inventário</span>
-    <% end %>
+        <%= link_to smartphones_index_path do %>
+          <span>Inventário</span>
+        <% end %>
+      </nav>
 
-    <%= yield %>
+      <%= yield %>
+      </div>
   </body>
 </html>

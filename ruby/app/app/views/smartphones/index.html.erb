@@ -1,41 +1,46 @@
-<h1>Inventário</h1>
+<h1 class="centered">Inventário</h1>
 
-<%= form_tag(smartphones_index_path, method: :get) do %>
-  <label for="manufacturer">Selecione um fabricante:</label>
-  <%= select_tag 'Fabricante',
-                  options_for_select(@manufacturers, selected: @selected_manufacturer),
-                  label: 'Fabricante',
-                  include_blank: 'Todos',
-                  name: 'manufacturer',
-                  id:'manufacturer'
-  %>
-  <br>
-  <br>
+<%= form_tag(smartphones_index_path, method: :get, class: 'centered') do %>
+  <div>
+    <label for="manufacturer">Selecione um fabricante:</label>
+    <br>
+    <%= select_tag 'Fabricante',
+                    options_for_select(@manufacturers, selected: @selected_manufacturer),
+                    label: 'Fabricante',
+                    include_blank: 'Todos',
+                    name: 'manufacturer',
+                    id:'manufacturer'
+    %>
+  </div>
 
-  <label for="model">Selecione um modelo:</label>
-  <%= select_tag 'Modelo',
-                  options_for_select(@models, selected: @selected_model),
-                  include_blank: 'Todos',
-                  name: 'model',
-                  id: 'model'
-  %>
-  <br>
-  <br>
+  <div>
+    <label for="model">Selecione um modelo:</label>
+    <br>
+    <%= select_tag 'Modelo',
+                    options_for_select(@models, selected: @selected_model),
+                    include_blank: 'Todos',
+                    name: 'model',
+                    id: 'model'
+    %>
+  </div>
 
-  <label for="carrier_plan_type">Selecione um tipo de plano:</label>
-  <%= select_tag 'Tipo de plano',
-                  options_for_select(@carrier_plan_types, selected: @selected_carrier_plan_type),
-                  include_blank: 'Todos',
-                  name: 'carrier_plan_type',
-                  id: 'carrier_plan_type'
-  %>
-  <br>
-  <br>
-  
-  <%= submit_tag 'Filtrar' %>
+  <div>
+    <label for="carrier_plan_type">Selecione um tipo de plano:</label>
+    <br>
+    <%= select_tag 'Tipo de plano',
+                    options_for_select(@carrier_plan_types, selected: @selected_carrier_plan_type),
+                    include_blank: 'Todos',
+                    name: 'carrier_plan_type',
+                    id: 'carrier_plan_type'
+    %>
+  </div>
+
+  <div id="submit">
+    <%= submit_tag 'Filtrar' %>
+  </div>
 <% end %>
 
-<p>Esses são os smartphones disponíveis no momento:</p>
+<p class="centered">Esses são os smartphones disponíveis no momento:</p>
 
 <% if @smartphones.empty? %>
   <p> Não foram encontrados smartphones em inventário com as caracteristicas filtradas. <p>
