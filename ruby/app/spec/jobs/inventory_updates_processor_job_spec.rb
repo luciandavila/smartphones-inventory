@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'support/shared_examples/jobs/inventory_updates_processor_job'
+require 'support/shared_examples/jobs/inventory_updates_processor'
 
 RSpec.describe InventoryUpdatesProcessorJob, type: :job do
   subject { described_class.perform_now inventory_update }

@@ -13,4 +13,15 @@ class InventoryUpdatesController < ApplicationController
     InventoryUpdatesProcessorJob.perform_later resource
     redirect_to inventory_updates_path
   end
+
+  def retry
+    resource = InventoryUpdate.find params[:id]
+
+    if resource.status == 'completed' && resource.processing_error == 'unexpected_error'
+      resource.update! status: 'processing', processing_error: nil
+      InventoryUpdatesProcessorJob.perform_later resource
+    end
+
+    redirect_to inventory_updates_path
+  end
 end

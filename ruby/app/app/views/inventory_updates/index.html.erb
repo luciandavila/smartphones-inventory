@@ -35,7 +35,7 @@
           <% end %>
         <td>
           <% if inventory_update.processing_error == 'unexpected_error' %>
-            Um erro inesperado aconteceu, por favor tente mais tarde. %>
+            Um erro inesperado aconteceu, por favor tente mais tarde. <br> <%= link_to 'Retentar processamento.', inventory_update_retry_path(inventory_update), method: :put %>
           <% elsif inventory_update.processing_error == 'invalid_csv' %>
             O arquivo CSV enviado não possui um formato válido.
           <% else %>

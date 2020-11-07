@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'smartphones', to: 'smartphones#index'
   get 'inventory_updates', to: 'inventory_updates#index'
   post 'inventory_updates', to: 'inventory_updates#create'
+  put 'inventory_updates/:id/retry', to: 'inventory_updates#retry', as: 'inventory_update_retry'
 
-  root to: 'inventory_update#index'
+  root to: 'inventory_updates#index'
 end
