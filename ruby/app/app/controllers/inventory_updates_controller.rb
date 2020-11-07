@@ -3,6 +3,7 @@
 class InventoryUpdatesController < ApplicationController
   def index
     @inventory_updates = InventoryUpdate.all.order created_at: :desc
+    @any_processing = InventoryUpdate.exists? status: 'processing'
   end
 
   def create

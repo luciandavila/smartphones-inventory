@@ -46,7 +46,8 @@
     <% end %>
   </table>
 
-  <p class="centered"><b>Atenção: </b>O processamento de uma atualização pode levar alguns minutos, você pode voltar mais tarde ou atualizar a página para conferir o resultado.</p>
-
+  <% if @any_processing %>
+    <p class="centered"><b>Atenção: </b>O processamento de uma atualização pode levar alguns minutos, você pode voltar mais tarde ou <a class="button" onclick="location.reload()">atualizar a página</a> para conferir o resultado.</p>
+  <% end %>
 <% end %>
 
