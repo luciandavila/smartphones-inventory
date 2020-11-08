@@ -1,8 +1,8 @@
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop-hq/rubocop) <a href="https://github.com/luciandavila/hiring/actions?query=workflow%3Aci"><img alt="ci status" src="https://github.com/luciandavila/hiring/workflows/ci/badge.svg"></a>
 
-# Alive App Tecnical Test
+# Alive App Technical Test
 
-This project has been developed in order to attend the ruby tecnical test from Alive App. The implementation uses Ruby on Rails. 
+This project has been developed in order to attend the ruby technical test from Alive App. The implementation uses Ruby on Rails. 
 
 In short, the project consists of a smartphones inventory of a virtual store that can be updated through the upload of csv files and also can be filtered through the interface.
 
@@ -64,7 +64,7 @@ $ bundle exec rubocop
 
 I ended up not having the time I wanted to develop this test, but I would like to list here some improvements that I would have made if there was more time available:
 
-* Upload from the front-end to the cloud: I would upload directly from the front end to a cloud storage tool (Amazon S3 or Google Cloud Storage), which would make the project faster and more scalable.
+* Upload from the front-end to the cloud: I would upload directly from the front end to a cloud storage tool (Amazon S3 or Google Cloud Storage), which would make the project faster and more scalable ([ActiveStorage supports this](https://github.com/rails/rails/tree/master/activestorage#direct-uploads) through its Javascript library).
 
 * Lists pagination: I would have implemented the pagination in smartphone's and inventory updates' lists, to avoid loading too much data at once from the database;
 

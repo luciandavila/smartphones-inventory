@@ -34,6 +34,10 @@ RSpec.describe InventoryUpdatesProcessorJob, type: :job do
 
     it_behaves_like 'update inventory_update model', status: { before: 'processing', after: 'completed' },
                                                      processing_error: { before: nil, after: 'invalid_csv' }
+
+    it 'does not change the smartphones table' do
+      expect { subject }.not_to change(Smartphone, :count)
+    end
   end
 
   context 'when a unexpected error happens' do
@@ -43,5 +47,9 @@ RSpec.describe InventoryUpdatesProcessorJob, type: :job do
 
     it_behaves_like 'update inventory_update model', status: { before: 'processing', after: 'completed' },
                                                      processing_error: { before: nil, after: 'unexpected_error' }
+
+    it 'does not change the smartphones table' do
+      expect { subject }.not_to change(Smartphone, :count)
+    end
   end
 end
