@@ -28,11 +28,15 @@ After cloning this repo, before running the app, you need to:
 # navigate to the correct folder
 $ cd ruby/app
 
-# use the expected ruby ​​version (2.6.6) (you can install the version  manually if you want to)
+# use the expected ruby ​​version (2.6.6)
+# you can install the version manually if you want to, but the project supports ruby version manager:
 $ rvm use
 
-# install the dependencies
+# install the yarn dependencies
+# (recommended node version is 10.20.1; recommended yarn version is 1.22.0)
 $ yarn install
+
+# install the ruby dependencies
 $ bundle install
 
 # setup the database
