@@ -39,7 +39,7 @@ jobs:
         cd ruby/app
         yarn install
 
-    - name: Setup db
+    - name: Setup database
       run: |
         cd ruby/app
         bundle exec rake db:setup
