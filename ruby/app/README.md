@@ -8,7 +8,7 @@ In short, the project consists of a smartphones inventory of a virtual store tha
 
 ## Technical highlights of the solution
 
-* Continuous integration runs the test suite and the rubocop linter;
+* Continuous integration runs the test suite and the rubocop linter (you can access workflows either by clicking on the ci badge or the actions tab);
 
 * Test suite uses good tools (rspec, shoulda matchers, factory bot, database cleaner, etc.);
 
@@ -36,24 +36,24 @@ $ yarn install
 $ bundle install
 
 # setup the database
-$ rake db: setup
+$ bundle exec rake db:setup
 ```
 
 ## Launching the application
 
 ``` bash
-# run the app at localhost: 3000
-$ rails s
+# run the app at localhost:3000
+$ bundle exec rails s
 ```
 
 ## Running automated tests and linter
 
 ``` bash
 # running the test suite
-$ rspec
+$ bundle exec rspec
 
 # running the linter
-$ rubocop
+$ bundle exec rubocop
 ```
 
 ## Conclusion
@@ -64,8 +64,10 @@ I ended up not having the time I wanted to develop this test, but I would like t
 
 * Lists pagination: I would have implemented the pagination in smartphone's and inventory updates' lists, to avoid loading too much data at once from the database;
 
-* Design improvements: Although I wrote very basic css, I would like to use some style framework, such as Semantic UI.
+* Design improvements: Although I wrote very basic css, I would like to use some style framework, such as Semantic UI;
 
-* Test coverage: Increase tests coverage to better cover GET endpoints and their views.
+* Better test coverage: Increase tests coverage to better cover GET endpoints and their views;
+
+* WebSockets: I would have used action cable to update the processing status of an inventory update, displaying a message with option to see the Inventory right after the processing has finished;
 
 Furthermore, if this project were to run in production, I would use Rollbar, which is a real-time exception reporting service for Ruby and other languages, it helps to monitor and understand errors occurring in production environment in real time, which enables the development team to rapidly fix errors.

@@ -14,44 +14,41 @@ jobs:
       with:
         node-version: 10.20.1
 
-    - name: Find yarn cache location
-      id: yarn-cache
+    - name: Set up Ruby 2.6.6
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.6.6
+        working-directory: ruby/app
+        bundler-cache: true
+
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
 
-    - name: JS package cache
-      uses: actions/cache@v1
+    - name: Yarn package cache
+      uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
-        path: ${{ steps.yarn-cache.outputs.dir }}
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
 
-    - name: Set up Ruby 2.6.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.6
-
-    - name: Ruby package cache
-      uses: actions/cache@v2
-      with:
-        path: ruby/app/vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-
-    - name: Install dependencies
+    - name: Install yarn dependencies
       run: |
         cd ruby/app
-        bundle install
         yarn install
+
     - name: Setup db
       run: |
         cd ruby/app
-        rake db:setup
+        bundle exec rake db:setup
+
     - name: Run tests
       run: |
         cd ruby/app
         bundle exec rspec
+
     - name: Run rubocop
       run: |
         cd ruby/app
