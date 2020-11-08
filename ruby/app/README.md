@@ -10,7 +10,7 @@ In short, the project consists of a smartphones inventory of a virtual store tha
 
 * Continuous integration runs the test suite and the rubocop linter (you can access workflows either by clicking on the ci badge or the actions tab);
 
-* Test suite uses good tools (rspec, shoulda matchers, factory bot, database cleaner, etc.);
+* Test suite uses good tools (rspec, shoulda matchers, factory bot, database cleaner, capybara, etc.);
 
 * Filterable columns from the SQL smartphones table have been indexed, which makes filtering faster;
 
@@ -69,8 +69,6 @@ I ended up not having the time I wanted to develop this test, but I would like t
 * Lists pagination: I would have implemented the pagination in smartphone's and inventory updates' lists, to avoid loading too much data at once from the database;
 
 * Design improvements: Although I wrote very basic css, I would like to use some style framework, such as Semantic UI;
-
-* Better test coverage: Increase tests coverage to better cover GET endpoints and their views;
 
 * WebSockets: I would have used action cable to update the processing status of an inventory update, displaying a message with option to see the Inventory right after the processing has finished;
 
