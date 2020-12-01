@@ -18,7 +18,6 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6.6
-        working-directory: ruby/app
         bundler-cache: true
 
     - name: Get yarn cache directory path
@@ -36,20 +35,16 @@ jobs:
 
     - name: Install yarn dependencies
       run: |
-        cd ruby/app
         yarn install
 
     - name: Setup database
       run: |
-        cd ruby/app
         bundle exec rake db:setup
 
     - name: Run tests
       run: |
-        cd ruby/app
         bundle exec rspec
 
     - name: Run rubocop
       run: |
-        cd ruby/app
         bundle exec rubocop
