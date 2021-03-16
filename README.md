@@ -26,10 +26,6 @@ You can find an example of a valid uploadable csv file at spec/files/input_valid
 
 After cloning this repo, before running the app, you need to:
 ```bash
-
-# navigate to the correct folder
-$ cd ruby/app
-
 # use the expected ruby ​​version (2.6.6)
 # you can install the version manually if you want to, but the project supports ruby version manager:
 $ rvm use
